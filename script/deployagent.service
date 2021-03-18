@@ -5,7 +5,7 @@ Description=Deploy Agent Service
 Type=simple
 User=root
 WorkingDirectory=/home/ec2-user/deploy-agent
-ExecStart=python3 main.py
+ExecStart=/script/launch.sh
 
 Restart=always
 RestartSec=1
