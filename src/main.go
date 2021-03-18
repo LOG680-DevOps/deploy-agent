@@ -53,7 +53,7 @@ func getHealtchCheck(c *gin.Context) {
 }
 
 func getDockerPs(c *gin.Context) {
-	cmd := exec.Command("sudo", "docker", "ps", "--all")
+	cmd := exec.Command("docker", "ps", "--all")
 
 	var result []string
 	if output, err := cmd.Output(); err != nil {
@@ -90,7 +90,7 @@ func getDockerUpdate(c *gin.Context) {
 		return
 	}
 
-	cmd := exec.Command("sudo", "bash", ""+DEPLOY_FILEPATH, dockerhub_repo, container_name, tag)
+	cmd := exec.Command("bash", ""+DEPLOY_FILEPATH, dockerhub_repo, container_name, tag)
 
 	var result []string
 	if output, err := cmd.Output(); err != nil {
