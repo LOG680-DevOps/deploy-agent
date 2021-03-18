@@ -3,7 +3,7 @@ Description=Deploy Agent Service
 After=network.target
 
 [Service]
-Type=simple
+Type=forking
 User=ec2-user
 WorkingDirectory=/home/ec2-user/deploy-agent
 ExecStart=/home/ec2-user/deploy-agent/DeployAgent -password TwoPizzaRule
