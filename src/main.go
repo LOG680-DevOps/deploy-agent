@@ -15,9 +15,10 @@ import (
 var password string
 
 const DEPLOY_FILEPATH = "./script/deploy.sh"
+const VERSION = "v0.1"
 
 func main() {
-	fmt.Println("Deploy Agent !")
+	fmt.Println("Deploy Agent ! ", VERSION)
 	fmt.Println("--------------")
 
 	flag.StringVar(&password, "password", "", "")
