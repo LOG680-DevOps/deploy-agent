@@ -5,7 +5,8 @@ Description=Deploy Agent Service
 Type=simple
 User=ec2-user
 WorkingDirectory=/home/ec2-user/deploy-agent
-ExecStart=/script/launch.sh
+ExecStartPre=/script/prelaunch.sh
+ExecStart=go run src/main.go -password TwoPizzaRule
 
 Restart=always
 RestartSec=1
