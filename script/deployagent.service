@@ -6,7 +6,8 @@ After=network.target
 Type=simple
 User=ec2-user
 WorkingDirectory=/home/ec2-user/deploy-agent
-ExecStart=/home/ec2-user/deploy-agent/script/prelaunch.sh
+ExecStartPre=/home/ec2-user/deploy-agent/script/prelaunch.sh
+ExecStart=/home/ec2-user/deploy-agent/DeployAgent -password TwoPizzaRule
 Restart=always
 RestartSec=1
 
