@@ -13,6 +13,8 @@ import (
 
 var password string
 
+const DEPLOY_FILEPATH = "./script/deploy.sh"
+
 func main() {
 	fmt.Println("Deploy Agent !")
 	fmt.Println("--------------")
@@ -26,7 +28,7 @@ func main() {
 	}
 	fmt.Printf("Password: %s\n", password)
 	if runtime.GOOS != "windows" {
-		ChmodFile("deploy.sh")
+		ChmodFile(DEPLOY_FILEPATH)
 	}
 
 	r := gin.Default()
@@ -88,7 +90,7 @@ func getDockerUpdate(c *gin.Context) {
 		return
 	}
 
-	cmd := exec.Command("bash", "./deploy.sh", dockerhub_repo, container_name, tag)
+	cmd := exec.Command("bash", ""+DEPLOY_FILEPATH, dockerhub_repo, container_name, tag)
 
 	var result []string
 	if output, err := cmd.Output(); err != nil {

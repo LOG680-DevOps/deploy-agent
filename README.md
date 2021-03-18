@@ -6,6 +6,6 @@ https://medium.com/mindorks/create-projects-independent-of-gopath-using-go-modul
 To import package into project, add in import and run
 ```go build```
 
-To run project ```go run main.go```
+To run project ```go run src/main.go```
 
-To build exe ```go build main.go```
+To build exe ```go build src/main.go```
