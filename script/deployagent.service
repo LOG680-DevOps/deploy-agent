@@ -3,7 +3,7 @@ Description=Deploy Agent Service
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 User=ec2-user
 WorkingDirectory=/home/ec2-user/deploy-agent
 ExecStartPre=/home/ec2-user/deploy-agent/script/prelaunch.sh
