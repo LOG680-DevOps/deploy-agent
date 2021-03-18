@@ -2,7 +2,7 @@
 
 set -e
 
-echo $1 $2 $3
+echo $1 $2 $3 $4
 
 echo "||| Starting deployment ..."
 echo ""
@@ -13,6 +13,6 @@ echo "||| Removing container ..."
 docker rm $2 --force || true
 echo ""
 echo "||| Starting new version ..."
-docker run -d --name $2 $1/$2:$3
+docker run -d $4 --name $2 $1/$2:$3
 echo ""
 echo "||| Deployment complete !"

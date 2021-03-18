@@ -77,6 +77,7 @@ func getDockerUpdate(c *gin.Context) {
 	dockerhub_repo := c.Query("dockerhub_repo")
 	container_name := c.Query("container_name")
 	tag := c.Query("tag")
+	args := c.Query("args")
 	if dockerhub_repo == "" {
 		c.JSON(http.StatusOK, gin.H{"error": "missing dockerhub_repo argument"})
 		return
@@ -89,8 +90,7 @@ func getDockerUpdate(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"error": "missing tag argument"})
 		return
 	}
-
-	cmd := exec.Command("bash", ""+DEPLOY_FILEPATH, dockerhub_repo, container_name, tag)
+	cmd := exec.Command("bash", DEPLOY_FILEPATH, dockerhub_repo, container_name, tag, args)
 
 	var result []string
 	if output, err := cmd.Output(); err != nil {
