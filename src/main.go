@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"os"
 	"os/exec"
 	"runtime"
 	"strings"
@@ -23,8 +24,11 @@ func main() {
 	flag.Parse()
 
 	if password == "" {
-		fmt.Println("Please set a password using flag\n\t -password <your_password>")
-		return
+		password = os.Getenv("DEPLOY_AGENT_PASSWORD")
+		if password == "" {
+			fmt.Println("Please set a password using flag\n\t -password <your_password> or environment variable DEPLOY_AGENT_PASSWORD")
+			return
+		}
 	}
 	fmt.Printf("Password: %s\n", password)
 	if runtime.GOOS != "windows" {
