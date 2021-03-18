@@ -1,12 +1,13 @@
 [Unit]
 Description=Deploy Agent Service
+After=network.target
 
 [Service]
 Type=simple
 User=ec2-user
 WorkingDirectory=/home/ec2-user/deploy-agent
-ExecStartPre=/script/prelaunch.sh
-ExecStart=go run src/main.go -password TwoPizzaRule
+
+ExecStart=/home/ec2-user/deploy-agent/DeployAgent -password TwoPizzaRule
 
 Restart=always
 RestartSec=1
