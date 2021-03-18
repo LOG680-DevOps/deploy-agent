@@ -1,5 +1,5 @@
 #!/bin/bash
 
+echo "--> Fetching last version."
 git pull
-sudo chmod +x prelaunch.sh
-ls
+echo "--> Complete!"
