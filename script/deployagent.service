@@ -3,7 +3,7 @@ Description=Deploy Agent Service
 
 [Service]
 Type=simple
-User=root
+User=ec2-user
 WorkingDirectory=/home/ec2-user/deploy-agent
 ExecStart=/script/launch.sh
 
