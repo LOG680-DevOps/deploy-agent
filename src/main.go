@@ -95,18 +95,24 @@ func getDockerUpdate(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"error": "missing tag argument"})
 		return
 	}
-	cmd := exec.Command("bash", DEPLOY_FILEPATH, dockerhub_repo, container_name, tag, args)
+
+	var cmd *exec.Cmd
+	if args == "" {
+		cmd = exec.Command("bash", DEPLOY_FILEPATH, dockerhub_repo, container_name, tag)
+	} else {
+		cmd = exec.Command("bash", DEPLOY_FILEPATH, dockerhub_repo, container_name, tag, args)
+	}
 
 	var result []string
-	if output, err := cmd.Output(); err != nil {
+	if output, err := cmd.CombinedOutput(); err != nil {
 		fmt.Printf("Output: %s\n", output)
 		fmt.Println("Error:", err)
-		result = strings.Split(string(output), "\n")
+		result = strings.SplitAfter(string(output), "\n")
 		c.JSON(http.StatusOK, gin.H{"error": err.Error(), "message": result})
 		return
 	} else {
 		fmt.Printf("Output: %s\n", output)
-		result = strings.Split(string(output), "\n")
+		result = strings.SplitAfter(string(output), "\n")
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": result})

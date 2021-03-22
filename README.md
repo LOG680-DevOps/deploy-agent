@@ -12,11 +12,12 @@ To run project ```go run src/main.go```
 To build exe ```go build -o DeployAgent src/main.go```
 
 ## To Install
-1. Git clone the project in ```/home/ec2-user/```
-2. Move into script folder ```cd deploy-agent/script/```
-3. Open ```deployagent.service``` file using ```nano deployagent.service``` and set your password at the end of line ```ExecStart```. Save on exit.
-4. Execute the command ```chmod +x install.sh```
-5. Install the app using the command ```sudo ./install.sh```
+1. Install git using ```sudo yum install git -y```
+2. Git clone the project in ```/home/ec2-user/```
+3. Move into script folder ```cd deploy-agent/script/```
+4. Open ```deployagent.service``` file using ```nano deployagent.service``` and set your password at the end of line ```ExecStart```. Save on exit.
+5. Execute the command ```chmod +x install.sh```
+6. Install the app using the command ```sudo ./install.sh```
 
 ## To Uninstall
 1. Move into script folder ```cd deploy-agent/script/```
