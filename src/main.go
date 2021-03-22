@@ -62,12 +62,14 @@ func getDockerPs(c *gin.Context) {
 
 	var result []string
 	if output, err := cmd.CombinedOutput(); err != nil {
+		fmt.Printf("Output: %s\n", output)
 		fmt.Println("Error:", err)
-		c.JSON(http.StatusOK, gin.H{"message": err})
+		result = strings.Split(string(output), "\n")
+		c.JSON(http.StatusOK, gin.H{"error": err.Error(), "message": result})
 		return
 	} else {
 		fmt.Printf("Output: %s\n", output)
-		result = strings.SplitAfter(string(output), "\n")
+		result = strings.Split(string(output), "\n")
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": result})
@@ -107,12 +109,12 @@ func getDockerUpdate(c *gin.Context) {
 	if output, err := cmd.CombinedOutput(); err != nil {
 		fmt.Printf("Output: %s\n", output)
 		fmt.Println("Error:", err)
-		result = strings.SplitAfter(string(output), "\n")
+		result = strings.Split(string(output), "\n")
 		c.JSON(http.StatusOK, gin.H{"error": err.Error(), "message": result})
 		return
 	} else {
 		fmt.Printf("Output: %s\n", output)
-		result = strings.SplitAfter(string(output), "\n")
+		result = strings.Split(string(output), "\n")
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": result})
