@@ -61,13 +61,13 @@ func getDockerPs(c *gin.Context) {
 	cmd := exec.Command("docker", "ps", "--all")
 
 	var result []string
-	if output, err := cmd.Output(); err != nil {
+	if output, err := cmd.CombinedOutput(); err != nil {
 		fmt.Println("Error:", err)
 		c.JSON(http.StatusOK, gin.H{"message": err})
 		return
 	} else {
 		fmt.Printf("Output: %s\n", output)
-		result = strings.Split(string(output), "\n")
+		result = strings.SplitAfter(string(output), "\n")
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": result})
