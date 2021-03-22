@@ -32,6 +32,7 @@ The command will download the image, stop and remove the container with the name
 **Examples**
 - http://ec2-23-95-154-24.compute-1.amazonaws.com:32777/docker/$DEPLOT_AGENT_PASSWORD/update?dockerhub_repo=pdemers&container_name=hvacsimulator&tag=latest
 - http://ec2-23-95-154-24.compute-1.amazonaws.com:32777/docker/$DEPLOT_AGENT_PASSWORD/update?dockerhub_repo=pdemers&container_name=hvacsimulator&tag=latest&args=-p%2032775:80
+- http://ec2-23-95-154-24.compute-1.amazonaws.com:32777/docker/$DEPLOT_AGENT_PASSWORD/update?dockerhub_repo=pdemers&container_name=hvacsimulator&tag=latest&args=-e%TOKEN=123abc
 
 ## To Install
 1. Install git using ```sudo yum install git -y```
