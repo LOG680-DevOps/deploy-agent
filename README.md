@@ -4,19 +4,19 @@ The Deploy Agent give the ability to deploy docker container from DockerHub on a
 ## To Use
 The agent has 3 http endpoits:
 ___
-### url:32777/ping
+### GET url:32777/ping
 To check if the agent is online & running
 
 **Examples**
 - http://ec2-23-95-154-24.compute-1.amazonaws.com:32777/ping
 ___
-### url:32777/docker/<your_password>/ps
+### GET url:32777/docker/<your_password>/ps
 To get the list of running container
 
 **Examples**
 - http://ec2-23-95-154-24.compute-1.amazonaws.com:32777/docker/$DEPLOT_AGENT_PASSWORD/ps
 ___
-### url:32777/docker/<your_password>/update
+### GET url:32777/docker/<your_password>/update
 To install or update a container.
 The command will download the image, stop and remove the container with the name provided if present and start the newly downloaded container.
 
